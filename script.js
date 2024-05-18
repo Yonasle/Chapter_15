@@ -1,4 +1,4 @@
-
+/*
 class User {
   constructor(name, email) {1
     this.name = name;
@@ -41,3 +41,44 @@ console.log(users);
 
 userThree.deleteUser(userTwo);
 console.log(users);
+*/
+
+function User(name, email) {
+  this.name = name;
+  this.email = email;
+}
+
+User.prototype.login = function(){
+  console.log(`${this.name} has logged in`);
+  return this;
+}
+
+User.prototype.logout = function(){
+  console.log(`${this.name} has logged out`);
+  return this;
+}
+
+
+function Admin(name, email, title) {
+  User.call(this, name, email);
+  this.title = title; 
+}
+
+Admin.prototype = Object.create(User.prototype);
+
+Admin.prototype.deleteUser = function(){
+
+  
+}
+
+const userOne = new User('John', 'Johndoe@gmail.com');
+const userTwo = new User('Jane', 'Janegobi@gmail.com');
+const userThree = new Admin('Yonas', 'lemmayonas@gmail.com', 'Super Admin')
+
+console.log(userOne, userTwo, userThree); 
+
+
+
+
+// userOne.login().logout()
+// userTwo.login().logout()
